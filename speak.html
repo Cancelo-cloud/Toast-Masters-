@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Green Beacons | Online Speaking Circle</title>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,700;0,900;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --green: #1a4731;
+      --green-mid: #2d6a4f;
+      --green-light: #52b788;
+      --green-pale: #d8f3dc;
+      --orange: #e05c1a;
+      --blue: #1e6fa8;
+      --blue-light: #60b4f0;
+      --cream: #faf7f2;
+      --dark: #0d1a11;
+      --muted: #5a6b60;
+    }
+
+    body {
+      font-family: 'DM Sans', 'Segoe UI', sans-serif;
+      background: var(--dark);
+      color: #ffffff;
+      line-height: 1.6;
+    }
+
+    /* ── HERO BANNER ─────────────────────── */
+    .hero-banner {
+      background: linear-gradient(135deg, #1a4731 0%, #0d5c3a 50%, #0a3d28 100%);
+      padding: 80px 40px 70px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-banner::before {
+      content: '';
+      position: absolute;
+      top: -100px; left: 50%;
+      transform: translateX(-50%);
+      width: 700px; height: 700px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(82,183,136,0.12) 0%, transparent 65%);
+      pointer-events: none;
+    }
+
+    .hero-banner::after {
+      content: '';
+      position: absolute;
+      bottom: -60px; right: -60px;
+      width: 300px; height: 300px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(224,92,26,0.08) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      background: rgba(82,183,136,0.15);
+      border: 1px solid rgba(82,183,136,0.35);
+      color: var(--green-light);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      padding: 7px 20px;
+      border-radius: 50px;
+      margin-bottom: 32px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-banner h1 {
+      font-family: 'Fraunces', serif;
+      font-size: clamp(42px, 7vw, 80px);
+      font-weight: 900;
+      line-height: 1.05;
+      margin-bottom: 16px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-banner h1 em {
+      font-style: italic;
+      color: var(--green-light);
+    }
+
+    .hero-sub {
+      font-size: 16px;
+      color: rgba(255,255,255,0.5);
+      letter-spacing: 1px;
+      font-weight: 400;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* ── CONTAINER ──────────────────────── */
+    .container {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 0 24px 80px;
+    }
+
+    /* ── SAM'S INTRO CARD ───────────────── */
+    .sam-card {
+      background: linear-gradient(135deg, #1e5c3a 0%, #0f3d28 100%);
+      border-radius: 24px;
+      padding: 48px 44px;
+      margin-top: -32px;
+      position: relative;
+      z-index: 2;
+      box-shadow: 0 24px 60px rgba(0,0,0,0.4);
+      border: 1px solid rgba(82,183,136,0.15);
+    }
+
+    .sam-from {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 32px;
+    }
+
+    .sam-avatar {
+      width: 52px; height: 52px;
+      border-radius: 50%;
+      background: var(--green-light);
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Fraunces', serif;
+      font-size: 20px;
+      font-weight: 900;
+      color: var(--green);
+      flex-shrink: 0;
+    }
+
+    .sam-name strong {
+      display: block;
+      font-weight: 600;
+      font-size: 15px;
+    }
+
+    .sam-name span {
+      font-size: 12px;
+      color: rgba(255,255,255,0.45);
+    }
+
+    .sam-card p {
+      font-size: 16px;
+      line-height: 1.8;
+      color: rgba(255,255,255,0.85);
+      margin-bottom: 16px;
+    }
+
+    .sam-card p:last-child { margin-bottom: 0; }
+
+    .pull-quote {
+      margin: 28px 0;
+      padding: 22px 28px;
+      border-left: 4px solid var(--green-light);
+      background: rgba(255,255,255,0.05);
+      border-radius: 0 14px 14px 0;
+      font-size: 18px;
+      font-style: italic;
+      color: rgba(255,255,255,0.9);
+      line-height: 1.6;
+    }
+
+    .pull-quote strong { color: var(--green-light); font-style: normal; }
+
+    /* ── SECTION HEADINGS ───────────────── */
+    .section-wrap {
+      margin-top: 56px;
+    }
+
+    .section-label {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--green-light);
+      margin-bottom: 8px;
+      display: block;
+    }
+
+    .section-title {
+      font-family: 'Fraunces', serif;
+      font-size: clamp(28px, 4vw, 40px);
+      font-weight: 900;
+      color: white;
+      margin-bottom: 28px;
+      line-height: 1.1;
+    }
+
+    /* ── THREE CARDS ────────────────────── */
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    .feature-card {
+      border-radius: 20px;
+      padding: 32px 26px;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.25s ease;
+    }
+
+    .feature-card:hover { transform: translateY(-5px); }
+
+    .feature-card.green {
+      background: linear-gradient(145deg, #1a5c3a, #0d3d26);
+      border: 1px solid rgba(82,183,136,0.25);
+    }
+
+    .feature-card.orange {
+      background: linear-gradient(145deg, #b84a00, #7a3000);
+      border: 1px solid rgba(255,140,50,0.35);
+    }
+
+    .feature-card.blue {
+      background: linear-gradient(145deg, #0e3d6b, #072444);
+      border: 1px solid rgba(96,180,240,0.25);
+    }
+
+    .feature-card .card-icon {
+      font-size: 36px;
+      margin-bottom: 18px;
+      display: block;
+    }
+
+    .feature-card h3 {
+      font-family: 'Fraunces', serif;
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    .feature-card.green h3 { color: var(--green-light); }
+    .feature-card.orange h3 { color: #f4a06a; }
+    .feature-card.blue h3 { color: var(--blue-light); }
+
+    .feature-card p {
+      font-size: 14px;
+      color: rgba(255,255,255,0.6);
+      line-height: 1.6;
+    }
+
+    /* ── FEEDBACK BULLETS ───────────────── */
+    .bullets-card {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 20px;
+      padding: 32px 36px;
+    }
+
+    .feedback-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .feedback-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+    }
+
+    .bullet-dot {
+      width: 10px; height: 10px;
+      border-radius: 50%;
+      background: var(--green-light);
+      flex-shrink: 0;
+      margin-top: 6px;
+    }
+
+    .bullet-dot.ai-note { background: var(--blue-light); }
+
+    .feedback-list li div {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .feedback-list li strong {
+      font-size: 15px;
+      color: white;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .feedback-list li span {
+      font-size: 13px;
+      color: rgba(255,255,255,0.5);
+      line-height: 1.55;
+    }
+
+    .ai-badge {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 1px;
+      background: rgba(96,180,240,0.15);
+      border: 1px solid rgba(96,180,240,0.3);
+      color: var(--blue-light);
+      padding: 3px 10px;
+      border-radius: 50px;
+      text-transform: uppercase;
+    }
+
+    /* ── WHAT WE LOOK AT ────────────────── */
+    .look-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .look-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 14px;
+      padding: 20px 22px;
+      transition: border-color 0.2s, background 0.2s;
+    }
+
+    .look-item:hover {
+      border-color: rgba(82,183,136,0.3);
+      background: rgba(82,183,136,0.05);
+    }
+
+    .look-num {
+      width: 32px; height: 32px;
+      border-radius: 50%;
+      background: var(--green-mid);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--green-light);
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .look-item p {
+      font-size: 14px;
+      color: rgba(255,255,255,0.75);
+      line-height: 1.5;
+    }
+
+    .look-item p strong {
+      display: block;
+      color: white;
+      font-size: 15px;
+      margin-bottom: 3px;
+    }
+
+    /* ── SAMPLE CARD LINK ───────────────── */
+    .sample-strip {
+      margin-top: 48px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.09);
+      border-radius: 16px;
+      padding: 28px 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .sample-strip p {
+      font-size: 15px;
+      color: rgba(255,255,255,0.65);
+    }
+
+    .sample-strip p strong { color: white; display: block; font-size: 16px; margin-bottom: 4px; }
+
+    .sample-link {
+      display: inline-block;
+      background: transparent;
+      border: 1px solid var(--green-light);
+      color: var(--green-light);
+      font-weight: 600;
+      font-size: 13px;
+      padding: 10px 24px;
+      border-radius: 50px;
+      text-decoration: none;
+      white-space: nowrap;
+      transition: background 0.2s, color 0.2s;
+      flex-shrink: 0;
+    }
+
+    .sample-link:hover {
+      background: var(--green-light);
+      color: var(--green);
+    }
+
+    /* ── DATE BLOCK ─────────────────────── */
+    .date-block {
+      margin-top: 48px;
+      background: linear-gradient(135deg, #1a4731, #0d3d28);
+      border-radius: 20px;
+      padding: 40px 36px;
+      border: 1px solid rgba(82,183,136,0.2);
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      text-align: center;
+    }
+
+    .date-item .d-label {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.4);
+      margin-bottom: 8px;
+      display: block;
+    }
+
+    .date-item .d-value {
+      font-family: 'Fraunces', serif;
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--green-light);
+      display: block;
+    }
+
+    .date-item .d-sub {
+      font-size: 12px;
+      color: rgba(255,255,255,0.4);
+      margin-top: 4px;
+      display: block;
+    }
+
+    /* ── FOOTER ─────────────────────────── */
+    footer {
+      text-align: center;
+      margin-top: 60px;
+      font-size: 13px;
+      color: rgba(255,255,255,0.25);
+      padding-bottom: 40px;
+    }
+
+    footer a { color: var(--green-light); text-decoration: none; }
+
+    /* ── RESPONSIVE ─────────────────────── */
+    @media (max-width: 700px) {
+      .cards-grid { grid-template-columns: 1fr; }
+      .look-grid { grid-template-columns: 1fr; }
+      .date-block { grid-template-columns: 1fr; text-align: left; }
+      .sample-strip { flex-direction: column; align-items: flex-start; }
+      .sam-card { padding: 36px 28px; }
+      .hero-banner { padding: 60px 24px 60px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── HERO ───────────────────────────────── -->
+  <div class="hero-banner">
+    <div class="hero-badge">🌱 GreenBeacons · Online Speaking Circle</div>
+    <h1>Speak.<br><em>Get seen.</em><br>Get ahead.</h1>
+    <p class="hero-sub">An online speaking circle for people with real opportunities ahead of them.</p>
+  </div>
+
+  <div class="container">
+
+    <!-- ── SAM'S INTRO ─────────────────────── -->
+    <div class="sam-card">
+      <div class="sam-from">
+        <div class="sam-avatar">S</div>
+        <div class="sam-name">
+          <strong>Samkelo Madlala</strong>
+          <span>Co-Founder, GreenBeacons</span>
+        </div>
+      </div>
+
+      <p>Hello — I'm Sam. If there was a place near your home where you could improve your public speaking, would you attend it? It would be time well invested.</p>
+
+      <div class="pull-quote">
+        Speaking well opens doors. But the real essence of it is this: <strong>selling yourself. Influencing the listener.</strong> In 20 seconds, people already know what you're made of — and then they decide about you.
+      </div>
+
+      <p>This is not for everyone. We're talking about people with <strong>life-changing opportunities</strong> in front of them — a job interview that could shift their income, a mentor who can open doors, a room where one conversation changes everything. If that opportunity exists for you, the way you speak will determine whether you get it. That's exactly what GreenBeacons Speaker Circle is built for.</p>
+    </div>
+
+    <!-- ── WHAT IS THIS ─────────────────────── -->
+    <div class="section-wrap">
+      <span class="section-label">What you get</span>
+      <h2 class="section-title">One session.<br>Real growth.</h2>
+      <div class="cards-grid">
+
+        <div class="feature-card green">
+          <span class="card-icon">🎤</span>
+          <h3>Your Turn to Speak</h3>
+          <p>Each session gives you 5–7 minutes to present a speech or story of your choice. First session topics are provided to help you get started.</p>
+        </div>
+
+        <div class="feature-card orange">
+          <span class="card-icon">💬</span>
+          <h3>Balanced Feedback</h3>
+          <p>80% encouragement. 20% clear improvement points. You grow without being discouraged — and you leave knowing exactly what to build on.</p>
+        </div>
+
+        <div class="feature-card blue">
+          <span class="card-icon">📄</span>
+          <h3>Personal Review Card</h3>
+          <p>Within 30 hours you receive a one-page personal feedback card on your performance. Specific. Structured. Yours to keep and build on.</p>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ── WHAT WE LOOK AT ─────────────────── -->
+    <div class="section-wrap">
+      <span class="section-label">The Feedback Framework</span>
+      <h2 class="section-title">What we look at.</h2>
+      <div class="bullets-card">
+        <ul class="feedback-list">
+          <li>
+            <span class="bullet-dot"></span>
+            <div>
+              <strong>Filler words</strong>
+              <span>"Uhm, like, you know" — we count them so you become aware. Awareness is the first step to cutting them.</span>
+            </div>
+          </li>
+          <li>
+            <span class="bullet-dot"></span>
+            <div>
+              <strong>Circling back to your lesson</strong>
+              <span>Did you return to the point of your story? e.g. "I told a great story — but did I land the lesson at the end?"</span>
+            </div>
+          </li>
+          <li>
+            <span class="bullet-dot"></span>
+            <div>
+              <strong>Pacing & breathing</strong>
+              <span>e.g. "I spoke too fast when the story got emotional — I forgot to breathe and let it land."</span>
+            </div>
+          </li>
+          <li>
+            <span class="bullet-dot"></span>
+            <div>
+              <strong>Opening strength</strong>
+              <span>e.g. "Did my first 20 seconds make people lean in — or did I lose them before I even started?"</span>
+            </div>
+          </li>
+          <li>
+            <span class="bullet-dot ai-note"></span>
+            <div>
+              <strong>AI-assisted review <span class="ai-badge">Powered by Fathom AI</span></strong>
+              <span>We use Fathom AI to record, transcribe, and assess speech quality — so your feedback is accurate, not just impressions.</span>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- ── SAMPLE CARD ─────────────────────── -->
+    <div class="sample-strip">
+      <p>
+        <strong>Sample Feedback Card</strong>
+        See what your personal 1-page review looks like after your session.
+      </p>
+      <a href="#" class="sample-link">View sample card →</a>
+    </div>
+
+    <!-- ── DATE BLOCK ──────────────────────── -->
+    <div class="date-block">
+      <div class="date-item">
+        <span class="d-label">First Session</span>
+        <span class="d-value">Sunday, 16 March</span>
+        <span class="d-sub">Proposed date</span>
+      </div>
+      <div class="date-item">
+        <span class="d-label">Time</span>
+        <span class="d-value">09:00</span>
+        <span class="d-sub">South Africa time</span>
+      </div>
+      <div class="date-item">
+        <span class="d-label">Format</span>
+        <span class="d-value">Online</span>
+        <span class="d-sub">Google Meet / WhatsApp Video</span>
+      </div>
+    </div>
+
+    <!-- ── FOOTER ──────────────────────────── -->
+    <footer>
+      <p style="margin-bottom: 10px;">
+        <a href="https://cancelo-cloud.github.io/Green-Beacons-/" target="_blank" style="color: var(--green-light); font-weight: 600; text-decoration: none;">View our website →</a>
+      </p>
+      <p>© 2025 GreenBeacons · <a href="mailto:greenbeacons.2025@gmail.com">greenbeacons.2025@gmail.com</a></p>
+    </footer>
+
+  </div>
+</body>
+</html>
